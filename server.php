@@ -1,5 +1,7 @@
 <?php
 session_start();
+header("Access-Control-Allow-Origin: *");
+require_once 'definition.php';
 
 // initializing variables
 $username = "";
@@ -9,6 +11,7 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'r');
+define('LOG_FILE', AUDIT_LOG_DIR.'/'.AUDIT_LOG_FILE_PREFIX.date("Ymd").AUDIT_LOG_FILE_SUFFIX.'.'.AUDIT_LOG_FILE_EXT);
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -68,6 +71,7 @@ if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
+  debug(__FILE__,__FUNCTION__,__LINE__, $username);
   if (empty($username)) {
   	array_push($errors, "Username is required");
   }
