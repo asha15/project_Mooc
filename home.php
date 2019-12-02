@@ -79,10 +79,13 @@
                       <div class="box">
                            <div class="content">
                               <div class="form loginBox">
-                                  <form method="" action="" accept-charset="UTF-8">
+                                  <form method="post" action="login.php" accept-charset="UTF-8">
+                                  <?php include('errors.php'); ?>
                                   <p>Email<input id="email" class="form-control" type="text" placeholder="Email" name="email"></p>
-                                  <p>Password<input id="password" class="form-control" type="password" placeholder="Password" name="password"></p>
-                                  <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                  <p>Password<input type="password" name="password"></p>
+                                  <div class="input-group">
+  	                                <button type="submit" class="btn" name="login_user">Login</button>
+  	                              </div>
                                   </form>
                               </div>
                            </div>

@@ -57,7 +57,7 @@ function loginAjax(){
     */
 
 /*   Simulate error message from the server   */
-     shakeModal();
+    // shakeModal();
 }
 
 function shakeModal(){
