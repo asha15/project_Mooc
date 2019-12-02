@@ -17,6 +17,66 @@
   <link href="assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
 </head>
 
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  max-height: 700px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #9c27b0;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
 <body>
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
@@ -95,6 +155,34 @@
       <div class="content">
         <div class="container-fluid">
           <!-- your content here -->
+
+          <button onclick="openForm()">Add new</button>
+          <br>
+          <br>
+          <div class="form-popup" id="myForm">
+  
+          <form action="/action_page.php" class="form-container">
+            <h3>Add leson</h3>
+
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" required>
+
+            <label for="position"><b>position</b></label>
+            <input type="text" placeholder="Enter position" name="position" required>
+
+            <label for="course"><b>course</b></label>
+            <input type="text" placeholder="Enter course name" name="course" required>
+
+            <label for="st"><b>short text</b></label>
+            <input type="text" placeholder="Enter short text" name="st" required>
+
+            <label for="ft"><b>Full text</b></label>
+            <input type="text" placeholder="Enter full text" name="ft" required>
+
+            <button type="submit" class="btn">Add</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+          </div>
           <div class="row">
             <div class="col-md-12">
               <div class="card">
@@ -218,6 +306,15 @@
       </footer>
     </div>
   </div>
-</body>
 
+  <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
 </html>
