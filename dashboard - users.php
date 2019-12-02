@@ -174,7 +174,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <label for="role"><b>Role</b></label>
             <input type="text" placeholder="Student/Teacher" name="role" required>
 
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>
