@@ -201,91 +201,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                               Role
                             </th>
                           </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                1
-                              </td>
-                              <td>
-                                Dakota Rice
-                              </td>
-                              <td>
-                                Niger
-                              </td>
-                              <td>
-                                Oud-Turnhout
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                2
-                              </td>
-                              <td>
-                                Minerva Hooper
-                              </td>
-                              <td>
-                                Curaçao
-                              </td>
-                              <td>
-                                Sinaai-Waas
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                3
-                              </td>
-                              <td>
-                                Sage Rodriguez
-                              </td>
-                              <td>
-                                Netherlands
-                              </td>
-                              <td>
-                                Baileux
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                4
-                              </td>
-                              <td>
-                                Philip Chaney
-                              </td>
-                              <td>
-                                Korea, South
-                              </td>
-                              <td>
-                                Overland Park
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                5
-                              </td>
-                              <td>
-                                Doris Greene
-                              </td>
-                              <td>
-                                Malawi
-                              </td>
-                              <td>
-                                Feldkirchen in Kärnten
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                6
-                              </td>
-                              <td>
-                                Mason Porter
-                              </td>
-                              <td>
-                                Chile
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                            </tr>
+                          <tbody class="users-table-body">
+                            
                           </tbody>
                         </table>
                       </div>
@@ -316,5 +233,9 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="assets/js/users.js"></script>
+
 </body>
 </html>

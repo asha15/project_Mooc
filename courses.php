@@ -87,35 +87,8 @@
                     <p class="description">Select a course as you prefer</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="info-icon">
-                            <div class="avatar avatar-danger">
-                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
-                                </div>
-                        <h3>courses</h3>
-                        <p class="description">we will provide you high qulity courses</p>
-                        <a class="btn btn-grey btn-fill btn-lg " data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();" >Physics</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-icon">
-                            <div class="avatar avatar-danger">
-                                    <img alt="..." class="img-circle" src="assets/img/faces/face_1.jpg"/>
-                                </div>
-                        <h3>Content</h3>
-                        <p class="description">We create a persona regarding the multiple wardrobe accessories that we provide..</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-icon">
-                        <div class="icon text-danger">
-                            <i class="pe-7s-music"></i>
-                        </div>
-                        <h3>Mentors</h3>
-                        <p class="description">We will provide you qulified mentors</p>
-                    </div>
-                </div>
+            <div class="row courses">
+                
             </div>
         </div>
     </div>
@@ -142,5 +115,6 @@
 
 <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
 <script type="text/javascript" src="assets/js/gaia.js"></script>
+<script type="text/javascript" src="assets/js/courses.js"></script>
 
 </html>
