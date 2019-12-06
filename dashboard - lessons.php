@@ -203,7 +203,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                           Title
                         </th>
                         <th>
-                          position
+                          Position
                         </th>
                       </thead>
                       <tbody class="lessons-body">
