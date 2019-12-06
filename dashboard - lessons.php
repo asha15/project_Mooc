@@ -235,6 +235,6 @@ function closeForm() {
 </script>
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="assets/js/dashboard-lessons.js"></script>
+<script type="text/javascript" src="assets/js/lessons.js"></script>
 </body>
 </html>

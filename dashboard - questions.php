@@ -109,13 +109,22 @@
                             ID
                           </th>
                           <th>
-                            Question 
+                            Course ID
                           </th>
                           <th>
-                            Lesson
+                            Lesson ID
                           </th>
                           <th>
-                            position
+                            Question ID
+                          </th>
+                          <th>
+                            Question
+                          </th>
+                          <th>
+                            Option text
+                          </th>
+                          <th>
+                            Answer
                           </th>
                         </thead>
                         <tbody class="question-body">
@@ -136,6 +145,7 @@
       </footer>
     </div>
   </div>
-  <script type="text/javascript" src="assets/js/dashboard-questions.js"></script>
+  <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="assets/js/questions.js"></script>
 </body>
 </html>

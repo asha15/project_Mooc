@@ -11,6 +11,6 @@
                             </tr>`  
         });
 
-        $('.questions').append(htmlElement);
+        $('.questions-body').append(htmlElement);
     });
 })();
