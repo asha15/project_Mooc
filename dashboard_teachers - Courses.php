@@ -1,5 +1,5 @@
 <?php
-  include('server.php');
+  require_once ('server.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -93,7 +93,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
+      <ul class="nav">
           <li class="nav-item active ">
             <a class="nav-link" href="./courses.php">
               <i class="material-icons">dashboard</i>
@@ -101,22 +101,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./dashboard - users.php">
-              <p>Users</p>
-            </a>
-          </li>
-          <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - courses.php">
+              <a class="nav-link" href="./dashboard_teachers - courses.php">
+                <i class="material-icons">content_paste</i>
                 <p>courses</p>
               </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - lessons.php">
+              <a class="nav-link" href="./dashboard_teachers - lessons.php">
+                <i class="material-icons">library_books</i>
                 <p>lessons</p>
               </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - questions.php">
+              <a class="nav-link" href="./dashboard_teachers-questions.php">
+                <i class="material-icons">bubble_chart</i>
                 <p>questions</p>
               </a>
             </li>
@@ -128,9 +126,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo"></a>
-          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -155,62 +150,57 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <!-- your content here -->
 
           <button onclick="openForm()">Add new</button>
-          <br>
-          <br>
+          <br><br>
+
           <div class="form-popup" id="myForm">
   
-          <form method="post" action="dashboard-users.php" class="form-container">
-            <h3>Add user</h3>
+          <form action="/action_page.php" class="form-container">
+            <h1>Add course</h1>
 
             <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="Enter Name" id="username" name="username" required>
+            <input type="text" placeholder="Enter Name" name="name" required>
 
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" id="email" name="email" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" name="psw" required>
+            <label for="des"><b>Description</b></label>
+            <input type="text" placeholder="Enter Description" name="des" required>
 
-            <label for="role"><b>Role</b></label>
-            <input type="text" placeholder="Student/Teacher" id="role" name="role" required>
-
-            <button type="submit" class="btn" onclick="addUser()">Add</button>
+            <button>Add image</button>
+            <br><br/>
+            <button type="submit" class="btn">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card">
-                    <div class="card-header card-header-primary">
-                      <h4 class="card-title ">Users list</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead class="text-primary">
-                            <th>
-                              ID
-                            </th>
-                            <th>
-                              Name
-                            </th>
-                            <th>
-                              Email
-                            </th>
-                            <th>
-                              Role
-                            </th>
-                          </thead>
-                          <tbody class="users-table-body">
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Courses</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Title
+                        </th>
+                        <th>
+                          Description
+                        </th>
+                        <th>
+                          Course image
+                        </th>
+                      </thead>
+                      <tbody class="courses-body">
+
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
-
-
+              </div>
+            </div>
 
         </div>
       </div>
@@ -222,7 +212,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
   </div>
 
-  
+    
 <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -234,7 +224,6 @@ function closeForm() {
 </script>
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="assets/js/users.js"></script>
-
+<script type="text/javascript" src="assets/js/dashboard_teachers-courses.js"></script>
 </body>
 </html>

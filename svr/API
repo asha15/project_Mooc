@@ -1,0 +1,3 @@
+Add user = http://localhost/r/svr/user.php?action=add&name=Aa&email=ash@gmail.com&role=1&pass=1234
+
+course for a user  = http://localhost/r/svr/course.php?action=read&user=8

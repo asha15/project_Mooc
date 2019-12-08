@@ -14,6 +14,15 @@ function db_course_read($args){
         };
     }
 
+    if (isset($args['user'])) {
+      $user = $args['user'];
+      if (is_numeric($user)) {
+        array_push($where_array, "u.id = '$user'");
+      } else {
+        array_push($where_array, "LOWER(u.name) = '$user'");
+      };
+  }
+
     $where_clause = "";
     if ($where_array) $where_clause = " AND " . implode(" AND ", $where_array);  
 
@@ -22,7 +31,7 @@ function db_course_read($args){
     FROM courses c
     LEFT JOIN teacher t ON t.course_id = c.id
     LEFT JOIN users u ON t.user_id = u.id
-    where c.id = t.course_id $where_clause";
+    where '' = '' $where_clause";
 
     $result = db_execute($query); 
     debug(__FILE__,__FUNCTION__,__LINE__, $query);

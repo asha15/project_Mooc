@@ -297,7 +297,7 @@
                 </li>
                 <li>
                     <a href="#testimonial2" role="tab" data-toggle="tab">
-                        <div class="image-clients">
+                        <div class="image-clients"> 
                             <img alt="..." class="img-circle" src="assets/img/faces/face_6.jpg"/>
                         </div>
                     </a>

@@ -2,8 +2,26 @@
 require_once 'db.php';
 
 function db_user_read($args){
-   debug(__FILE__,__FUNCTION__,__LINE__, 'true');
+
+   $email = 'sheema@gmail.com';
+   $password = 'test123';
+
+   $query = "SELECT id FROM users WHERE email='$email' AND password= md5('$password')";
+   debug(__FILE__,__FUNCTION__,__LINE__, $query);
+   $result1 = db_execute($query);
+
+   $id = $result1['0']['id'];
+   debug(__FILE__,__FUNCTION__,__LINE__, $result1);
+   debug(__FILE__,__FUNCTION__,__LINE__, $id);
+
+   $role_id = '';
+    $query = "SELECT role_id FROM role_user WHERE user_id = '$id' ";
+
+   $result2 = db_execute($query);
+   $result2 = $result2['0']['role_id'];
+   debug(__FILE__,__FUNCTION__,__LINE__, $result2);
    $query = "SELECT * from users"; 
+
 
    $result = db_execute($query); 
    debug(__FILE__,__FUNCTION__,__LINE__, $result);

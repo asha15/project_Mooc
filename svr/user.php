@@ -6,11 +6,9 @@ info(__FILE__, __FUNCTION__, __LINE__, $action, reset_pass($_REQUEST));
 
 switch ($action) {
   case ACTION_READ:
-    debug(__FILE__,__FUNCTION__,__LINE__, 'true');
     db_user_read($_REQUEST);
     break;
   case ACTION_ADD:
-    debug(__FILE__,__FUNCTION__,__LINE__, 'true');
     db_user_add($_REQUEST);
     break;  
   case ACTION_MOD:

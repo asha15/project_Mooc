@@ -89,13 +89,23 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-    $query = "SELECT * FROM users WHERE email='$email' AND password= md5('$password')";
+    $query = "SELECT id FROM users WHERE email='$email' AND password= md5('$password')";
     echo $query;
-    $results = mysqli_query($db, $query);
-  	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['username'] = $username;
-  	  $_SESSION['success'] = "You are now logged in";
-  	  header('location: courses.php');
+    $results = db_execute($query);
+
+    debug(__FILE__,__FUNCTION__,__LINE__, $results);
+
+    $id = $results['id'];
+    $role_id = '';
+    $query = "SELECT role_id FROM role_user WHERE user_id = '$id'";
+    echo $query;
+    $role_id = db_execute($query);
+    echo $role_id;
+
+  	if (mysqli_num_rows($role_id) == 1) {
+      if($role_id = 1){ header('location: dashboard.php'); }
+      else if($role_id = 2){ header('location: dashboard_teachers.php'); }
+      else header('location: courses.php');
   	}else {
   		array_push($errors, "Wrong username/password combination");
   	}
