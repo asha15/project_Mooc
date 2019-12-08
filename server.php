@@ -93,7 +93,7 @@ if (isset($_POST['reg_user'])) {
     if($role_id == '3'){
       header('location: courses.php');
     }else{
-      header('location: login.php');
+      header('location: dashboard_teachers.php');
     }
 
   	
