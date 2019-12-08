@@ -3,23 +3,31 @@ require_once 'db.php';
 
 function db_user_read($args){
 
-   $email = 'sheema@gmail.com';
-   $password = 'test123';
+   $role = 'student';
+   
+   $query = "Select max(id) as id from users";
+    $user_id = db_execute($query);
 
-   $query = "SELECT id FROM users WHERE email='$email' AND password= md5('$password')";
-   debug(__FILE__,__FUNCTION__,__LINE__, $query);
-   $result1 = db_execute($query);
+    debug(__FILE__,__FUNCTION__,__LINE__, $user_id);
 
-   $id = $result1['0']['id'];
-   debug(__FILE__,__FUNCTION__,__LINE__, $result1);
-   debug(__FILE__,__FUNCTION__,__LINE__, $id);
+    $user_id = $user_id['0']['id'];
+   debug(__FILE__,__FUNCTION__,__LINE__, $user_id);
 
    $role_id = '';
-    $query = "SELECT role_id FROM role_user WHERE user_id = '$id' ";
+   if($role == 'student'){
+     $role_id = '3';
+   }else{
+     $role_id = '2';
+   }
 
-   $result2 = db_execute($query);
-   $result2 = $result2['0']['role_id'];
-   debug(__FILE__,__FUNCTION__,__LINE__, $result2);
+   $query = "INSERT INTO `role_user` (role_id, user_id)
+            VALUES ($role_id, $user_id)";
+
+   debug(__FILE__,__FUNCTION__,__LINE__, $role_id);
+   debug(__FILE__,__FUNCTION__,__LINE__, $query);
+   db_execute($query);
+
+
    $query = "SELECT * from users"; 
 
 

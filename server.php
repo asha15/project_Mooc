@@ -70,8 +70,9 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password')";
     mysqli_query($db, $query);
     
-    $query = "Select max(id) from users";
-    $user_id = mysqli_query($db, $query);
+    $query = "Select max(id) as id from users";
+    $user_id = db_execute($query);
+    $user_id = $user_id['0']['id'];
 
     $role_id = '';
     if($role == 'student'){
@@ -80,11 +81,10 @@ if (isset($_POST['reg_user'])) {
       $role_id = '2';
     }
 
-     $role_id = implode(" ",$role_id);
-
-     $query = "INSERT INTO `role_user` (role_id, user_id)
+    $query = "INSERT INTO `role_user` (role_id, user_id)
              VALUES ($role_id, $user_id)";
 
+    db_execute($query);
     //         echo $query;
     // mysqli_query($db, $query);        
   	// $_SESSION['username'] = $username;
