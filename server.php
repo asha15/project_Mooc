@@ -3,6 +3,7 @@ session_start();
 header("Access-Control-Allow-Origin: *");
 require_once 'definition.php';
 require_once 'util.php';
+require_once 'db.php';
 
 // initializing variables
 $username = "";
@@ -91,9 +92,9 @@ if (isset($_POST['reg_user'])) {
   	// $_SESSION['success'] = "You are now logged in";
 
     if($role_id == '3'){
-      header('location: courses.php');
+      header('location: courses.php?user='.$user_id);
     }else{
-      header('location: dashboard_teachers.php');
+      header('location: dashboard_teachers.php?user='.$user_id);
     }
 
   	
@@ -129,10 +130,10 @@ if (isset($_POST['login_user'])) {
     $result2 = $result2['0']['role_id'];
 
       if($result2 == '1'){ 
-        header('location: dashboard.php'); 
+        header('location: dashboard.php?user='.$id); 
       } else if($result2 == '2'){ 
-        header('location: dashboard_teachers.php'); 
-      } else header('location: courses.php');
+        header('location: dashboard_teachers.php?user='.$id); 
+      } else header('location: courses.php?user='.$id);
   	}
   
 }
