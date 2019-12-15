@@ -1,28 +1,46 @@
 <?php
 require_once 'db.php';
 
-// function db_lessons_read($args){
-    
-//     $course = $args['course'];
-//     $user = $args['user'];
-   
-//     $query = "select l.id as lesson_id, u.name as teacher, c.title as course, l.lesson_image, l.short_text, l.full_text
-//     from lessons l
-//     left outer join users u on u.id = l.user_id
-//     left outer join courses c on c.id = l.course_id
-//     where l.course_id = $course ANd l.user_id = $user";
-
-//     $result = db_execute($query); 
-//     debug(__FILE__,__FUNCTION__,__LINE__, $query);
-
-//     succ_return($result);
-// }
-
 function db_lessons_read($args){
 
-  $query = "SELECT id, course_id, title, position
-  from lessons";
+  $where_array = array();
 
+    if (isset($args['user'])) {
+      $user = $args['user'];
+      if (is_numeric($user)) {
+        array_push($where_array, "lessons.user_id = '$user'");
+      } 
+    }
+
+    if (isset($args['course'])) {
+      $course = $args['course'];
+      if (is_numeric($course)) {
+        array_push($where_array, "lessons.course_id = '$course'");
+      } 
+    }
+
+    if (isset($args['id'])) {
+      $id = $args['id'];
+      if (is_numeric($id)) {
+        array_push($where_array, "lessons.id = '$id'");
+      } 
+    }
+
+    if (isset($args['position'])) {
+      $position = $args['position'];
+      if (is_numeric($position)) {
+        array_push($where_array, "lessons.position = '$position'");
+      } 
+    }
+
+  $where_clause = "";
+    if ($where_array) $where_clause = " AND " . implode(" AND ", $where_array);  
+
+  $query = "SELECT lessons.* 
+  FROM `lessons` 
+  WHERE '' = '' $where_clause";
+
+  debug(__FILE__,__FUNCTION__,__LINE__. $query);
   $result = db_execute($query);
   succ_return($result);
 }

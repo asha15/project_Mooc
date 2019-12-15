@@ -58,7 +58,13 @@
                 <i class="material-icons">bubble_chart</i>
                 <p>questions</p>
               </a>
-            </li>
+          </li>
+          <li class="nav-item active ">
+              <a class="nav-link" href="./home.php">
+                <i class="material-icons">library_books</i>
+                <p>Logout</p>
+              </a>
+          </li>
           <!-- your sidebar here -->
         </ul>
       </div>

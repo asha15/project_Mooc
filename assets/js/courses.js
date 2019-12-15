@@ -1,5 +1,5 @@
 (function(){
-    $.get('http://localhost/r/svr/course.php?action=read&course=1&user=8', function(data){
+    $.get('http://localhost/r/svr/course.php?action=read', function(data){
 
         var htmlElement = "";
         data.details.forEach(e => {

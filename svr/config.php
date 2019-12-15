@@ -1,8 +1,8 @@
 <?php
 define('DB_NAME', 'r');
 define('DB_SERVER', 'localhost:3306');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'rootuser');
+define('DB_PASS', '123456789');
 
 define('DEFAULT_PAGE_SIZE', 10);
 define('DEFAULT_UPDATED_BY', null);

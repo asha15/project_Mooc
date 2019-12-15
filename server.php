@@ -3,6 +3,7 @@ session_start();
 header("Access-Control-Allow-Origin: *");
 require_once 'definition.php';
 require_once 'util.php';
+require_once 'db.php';
 
 // initializing variables
 $username = "";
@@ -11,7 +12,7 @@ $role = "";
 $errors = array(); 
 
 // connect to the database
- $db = mysqli_connect('localhost', 'root', '', 'r');
+ $db = mysqli_connect('localhost', 'rootuser', '123456789', 'r');
 // define('LOG_FILE', AUDIT_LOG_DIR.'/'.AUDIT_LOG_FILE_PREFIX.date("Ymd").AUDIT_LOG_FILE_SUFFIX.'.'.AUDIT_LOG_FILE_EXT);
 
 
@@ -114,9 +115,9 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-    $query = "SELECT id FROM users WHERE email='$email' AND password= md5('$password')";
-    echo $query;
+    $query = "SELECT id FROM users WHERE email='$email' AND password= '$password'";
     $result1 = db_execute($query);
+    debug(_file_,_function_,_line_, $result1);
 
   // $results = mysqli_query($db, $query);
     //  $id = $results['id'];
