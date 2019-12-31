@@ -92,9 +92,9 @@ if (isset($_POST['reg_user'])) {
   	// $_SESSION['success'] = "You are now logged in";
 
     if($role_id == '3'){
-      header('location: courses.php');
+      header('location: courses.php?user='.$user_id);
     }else{
-      header('location: dashboard_teachers.php');
+      header('location: dashboard_teachers.php?user='.$user_id);
     }
 
   	
@@ -115,7 +115,7 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-    $query = "SELECT id FROM users WHERE email='$email' AND password= '$password'";
+    $query = "SELECT id FROM users WHERE email='$email' AND password= md5('$password')";
     $result1 = db_execute($query);
     debug(_file_,_function_,_line_, $result1);
 
@@ -130,10 +130,10 @@ if (isset($_POST['login_user'])) {
     $result2 = $result2['0']['role_id'];
 
       if($result2 == '1'){ 
-        header('location: dashboard.php'); 
+        header('location: dashboard.php?user='.$id); 
       } else if($result2 == '2'){ 
-        header('location: dashboard_teachers.php'); 
-      } else header('location: courses.php');
+        header('location: dashboard_teachers.php?user='.$id); 
+      } else header('location: courses.php?user='.$id);
   	}
   
 }

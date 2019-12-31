@@ -88,7 +88,46 @@
                 </div>
             </div>
             <div class="row courses">
-                
+            
+              <?php
+
+                        $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                        if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        $args = $_REQUEST;
+
+			$course_id = $args['course'];
+			$user_id = $args['user'];
+                        $sql = "SELECT id,position, title FROM `lessons`
+				WHERE course_id = $course_id AND user_id = $user_id ";
+                        $result = $conn->query($sql);
+
+
+                        print "<table>";
+
+                        foreach($result as $row){
+
+				print " <tr>";
+				$id = $row['id'];
+                                $position = $row['position'];
+                                $title = $row['title'];
+
+                                print " <td> <p>Lesson: $position<p> </td>";
+                                print "<td>    </td>";
+                                print "<td>$title</td>";
+
+                                print "<td><button><a href=\"./lesson.php?lesson=$id\">Take the lesson</a></button></td>";
+
+			 print "</tr>";
+                        }
+
+                        print "</table>";
+
+                ?>
+	
             </div>
         </div>
     </div>

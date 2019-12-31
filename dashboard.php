@@ -48,7 +48,7 @@
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - courses.php">
+              <a class="nav-link" href="./d-courses.php">
                 <i class="material-icons">content_paste</i>
                 <p>courses</p>
               </a>

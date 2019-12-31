@@ -1,23 +1,4 @@
 <?php require_once('server.php');?>
-
-<!--
-
-=========================================================
-* Gaia Bootstrap Template - v1.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/gaia-bootstrap-template
-* Licensed under MIT (https://github.com/creativetimofficial/gaia-bootstrap-template/blob/master/LICENSE.md)
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +69,46 @@
                 </div>
             </div>
             <div class="row courses">
-                
+		    	<?php
+				$conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+		}
+
+		$args = $_REQUEST;
+		$course_id = $args['course']; 
+
+		$sql = "SELECT u.id, u.name, t.teachers_image as image, t.education, t.contact
+FROM `teacher` t
+LEFT JOIN users u ON u.id = t.user_id
+WHERE t.course_id = $course_id";
+
+		$result = $conn->query($sql);
+
+		print "<table>";
+
+		foreach($result as $row){
+
+			print " <tr>";
+			$id = $row['id'];
+			$name = $row['name'];
+			$image = $row['image'];
+			$education = $row['education'];
+			$contact = $row['contact'];
+
+			print "<td>$name</td>";
+			print "<td><img src=$image width=\"150\" height=\"100\"></td>";
+			print "<td>$education</td>";
+			print "<td>$contact</td>";
+			print "<td><button><a href=\"./lesson_id.php?user=$id&course=$course_id\">Show the lessons</a></button></td>";
+			print "</tr>";
+		}
+
+			print "</table>";
+
+
+			?>
             </div>
         </div>
     </div>

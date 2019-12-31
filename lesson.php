@@ -1,23 +1,5 @@
 <?php require_once('server.php');?>
 
-<!--
-
-=========================================================
-* Gaia Bootstrap Template - v1.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/gaia-bootstrap-template
-* Licensed under MIT (https://github.com/creativetimofficial/gaia-bootstrap-template/blob/master/LICENSE.md)
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,22 +65,48 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="title-area">
-                    <p class="description">Select a lesson</p>
-                </div>
+                
             </div>
             <div class="row courses">               
-            </div>          
+		<?php
+
+			$conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+			if ($conn->connect_error) {
+                        	die("Connection failed: " . $conn->connect_error);
+			}
+
+			$args = $_REQUEST;
+
+			$lesson_id = $args['lesson'];
+			$sql = "SELECT id, title, lesson_image as image, short_text as short,full_text as full
+				FROM `lessons`
+				 WHERE id = $lesson_id ";
+			$result = $conn->query($sql);
+
+
+			foreach($result as $row){
+
+				$id = $row['id'];
+				$title = $row['title'];
+				$image = $row['image'];
+				$short = $row['short'];
+				$full = $row['full'];
+
+				print "<h2>$title</h2>";
+				print "<img src = \"$image\"> ";
+				print "<p>$short</p>";
+				print "<p>$full</p>";
+
+				print "<td><button><a href=\"./questions.php?leson=$id\">Take the quiz</a></button></td>";
+
+			}
+
+		?>
+	    </div>          
         </div>
     </div>
 
-    <div class="section">
-        <div class="container">
-        <a class="nav-link" href="./questions.php">
-                <p>Take the quiz</p>
-              </a>
-        </div>
-    </div>
 
     <footer class="footer footer-big footer-color-black" data-color="black">
         

@@ -101,22 +101,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="./dashboard - users.php">
+	    <a class="nav-link" href="./dashboard - users.php">
+              <i class="material-icons">person</i>
               <p>Users</p>
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - courses.php">
+              <a class="nav-link" href="./d-courses.php">
+                <i class="material-icons">content_paste</i>
                 <p>courses</p>
               </a>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./dashboard - lessons.php">
+                <i class="material-icons">library_books</i>
                 <p>lessons</p>
               </a>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./dashboard - questions.php">
+                <i class="material-icons">bubble_chart</i>
                 <p>questions</p>
               </a>
           </li>
@@ -126,6 +130,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <p>Logout</p>
               </a>
           </li>
+
           <!-- your sidebar here -->
         </ul>
       </div>

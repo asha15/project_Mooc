@@ -1,23 +1,3 @@
-<?php require_once('server.php');?>
-
-<!--
-
-=========================================================
-* Gaia Bootstrap Template - v1.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/gaia-bootstrap-template
-* Licensed under MIT (https://github.com/creativetimofficial/gaia-bootstrap-template/blob/master/LICENSE.md)
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,9 +22,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
 </head>
-
 <body>
-
     <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
         <div class="container">
@@ -87,8 +65,50 @@
                     <p class="description">Select a course as you prefer</p>
                 </div>
             </div>
-            <div class="row courses">
+	    <div class="row courses">
+
                 
+	<?php 
+
+		$conn = new mysqli("localhost", "rootuser", "123456789", "r");	
+
+		if ($conn->connect_error) {
+    			die("Connection failed: " . $conn->connect_error);
+		}
+
+		$sql = "SELECT id, title, course_image FROM `courses`";
+		$result = $conn->query($sql);    
+
+		print "<table>";
+
+		//if($result->num_rows >0){
+		//	while($row = $result->fetch_assoc()){
+				
+		//		echo "<br> id:" . $row["id"];
+		//	}
+	
+		//}
+
+
+
+		foreach($result as $row){
+
+		print " <tr>";
+		$id = $row["id"];
+		$title = $row["title"];
+		$image = $row["course_image"];
+
+		print " <td> $id </td>";
+		print " <td>$title  </td>";
+		print " <td><img src=$image width=\"150\" height=\"100\"> </td>";
+		//print "<td>$image</td>";
+		print "<button><a href=\"./teachers.php?course=$id\">Learn more</a></button>";
+		print "</tr>";
+		}
+
+		print "</table>";
+        ?>
+
             </div>
         </div>
     </div>
@@ -101,6 +121,8 @@
             openLoginModal();
         });
     </script>
+
+
 </body>
 
 <!--   core js files    -->
