@@ -221,17 +221,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         die("Connection failed: " . $conn->connect_error);
                 }
 
-					$sql = "SELECT DISTINCT u.id, u.name, u.email, r.title 
+					$sql = "SELECT DISTINCT u.name, u.email, r.title 
           FROM `users` u 
           LEFT JOIN role_user ru ON ru.user_id = u.id 
           LEFT JOIN roles r ON r.id = ru.role_id ";
 
-					$result = $conn->query($sql);
+          $result = $conn->query($sql);
+          
+          $id = 1;
 
           foreach($result as $data){
             print "<tr>";
 
-              $id = $data['id'];
               $name = $data['name'];
               $email = $data['email'];
               $title = $data['title'];
@@ -241,6 +242,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
               print "<td>$email</td>";
               print "<td>$title</td>";
               print "</tr>";
+
+              $id ++;
           }
 		
 				?>

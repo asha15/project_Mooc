@@ -213,6 +213,41 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         </th>
                       </thead>
                       <tbody class="lessons-body">
+
+                      <?php
+                      
+                      
+			  		              $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+					                if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                          }
+
+					                $sql = "SELECT c.title as course, l.title as lesson, l.position 
+                                  FROM `lessons` l 
+                                  LEFT JOIN courses c ON c.id = l.course_id  ";
+    
+                          $result =$conn->query($sql);
+
+                          $id = 1;
+ 
+                          foreach($result as $data){
+                            print "<tr>";
+                
+                              $course = $data['course'];
+                              $lesson = $data['lesson'];
+                              $position = $data['position'];
+                
+                              print "<td>$id</td>";
+                              print "<td>$course</td>";
+                              print "<td>$lesson</td>";
+                              print "<td>$position</td>";
+                              print "</tr>";
+
+                              $id ++;
+                          }
+                      
+                      ?>
                       
                       </tbody>
                     </table>

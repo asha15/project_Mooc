@@ -208,6 +208,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                       <tbody class="courses-body">
 
                       <?php
+
 			  		              $conn = new mysqli("localhost", "rootuser", "123456789", "r");
 
 					                if ($conn->connect_error) {
@@ -216,8 +217,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 					                $sql = "SELECT id, title, description, course_image as image 
                                   FROM `courses`  ";
-
-                          echo $sql;
     
                           $result =$conn->query($sql);
  
@@ -236,7 +235,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
                               print "</tr>";
                           }
                          
-		
 				                ?>
 
                       </tbody>

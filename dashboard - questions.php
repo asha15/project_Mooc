@@ -121,9 +121,6 @@
                             Lesson ID
                           </th>
                           <th>
-                            Question ID
-                          </th>
-                          <th>
                             Question
                           </th>
                           <th>
@@ -134,6 +131,48 @@
                           </th>
                         </thead>
                         <tbody class="question-body">
+
+    <?php
+
+         $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+         if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+              }
+
+        $sql = "SELECT DISTINCT c.title as course, l.title as lesson, q.question,
+                qo.option_text as answer, qo.correct 
+			          FROM questions q
+ 		            LEFT JOIN questions_options qo ON qo.question_id= q.id
+		            LEFT JOIN question_test qt ON qt.question_id = q.id
+		            LEFT JOIN tests t ON t.id = qt.test_id
+                LEFT JOIN tests t1 ON t1.id = qt.test_id
+                LEFT JOIN courses c ON c.id = t1.course_id
+                LEFT JOIN lessons l ON l.id = t1.lesson_id ";
+
+        $result = $conn->query($sql);
+        $id = 1;
+
+        foreach($result as $data){
+          print "<tr>";
+
+            $course = $data['course'];
+            $lesson = $data['lesson'];
+            $question = $data['question'];
+            $answer = $data['answer'];
+            $correct = $data['correct'];
+
+            print "<td>$id</td>";
+            print "<td>$course</td>";
+            print "<td>$lesson</td>";
+            print "<td>$question</td>";
+            print "<td>$answer</td>";
+            print "<td>$correct</td>";
+            print "</tr>";
+
+            $id ++;
+        }
+        ?>
                           
                         </tbody>
                       </table>
