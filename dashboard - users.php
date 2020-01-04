@@ -212,7 +212,38 @@ body {font-family: Arial, Helvetica, sans-serif;}
                             </th>
                           </thead>
                           <tbody class="users-table-body">
-                            
+
+
+				<?php
+			  		 $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+					 if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                }
+
+					$sql = "SELECT DISTINCT u.id, u.name, u.email, r.title 
+          FROM `users` u 
+          LEFT JOIN role_user ru ON ru.user_id = u.id 
+          LEFT JOIN roles r ON r.id = ru.role_id ";
+
+					$result = $conn->query($sql);
+
+          foreach($result as $data){
+            print "<tr>";
+
+              $id = $data['id'];
+              $name = $data['name'];
+              $email = $data['email'];
+              $title = $data['title'];
+
+              print "<td>$id</td>";
+              print "<td>$name</td>";
+              print "<td>$email</td>";
+              print "<td>$title</td>";
+              print "</tr>";
+          }
+		
+				?>
                           </tbody>
                         </table>
                       </div>
@@ -245,7 +276,7 @@ function closeForm() {
 </script>
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="assets/js/users.js"></script>
+<!-- <script type="text/javascript" src="assets/js/users.js"></script> -->
 
 </body>
 </html>

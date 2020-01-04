@@ -1,23 +1,5 @@
 <?php require_once('server.php');?>
 
-<!--
-
-=========================================================
-* Gaia Bootstrap Template - v1.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/gaia-bootstrap-template
-* Licensed under MIT (https://github.com/creativetimofficial/gaia-bootstrap-template/blob/master/LICENSE.md)
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +69,46 @@
                     <p class="description">Select a lesson</p>
                 </div>
             </div>
-            <div class="row courses">               
+	    <div class="row courses">
+
+		<?php
+
+			 $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+		}
+
+		$args = $_REQUEST;
+	
+		$lesson_id = $args['lesson'];
+
+		$sql = "SELECT DISTINCT q.id, q.question, qo.option_text  as option
+			FROM questions q
+ 		 LEFT JOIN questions_options qo ON qo.question_id= q.id
+		 LEFT JOIN question_test qt ON qt.question_id = q.id
+		 LEFT JOIN tests t ON t.id = qt.test_id
+		 WHERE t.lesson_id = 4 ";
+
+		 $result = $conn->query($sql);
+
+		$q = 0;
+		foreach($result as $row){
+
+			
+			$id = $row['id'];
+			$question = $row['question'];
+			$option  = $row['option'];
+			
+			if($q != $question){
+			print "<h6>$question</h6>";
+			}
+			
+			print "<p>$option</p>";
+			$q = $question;
+		
+		}
+		?>	       
             </div>          
         </div>
     </div>

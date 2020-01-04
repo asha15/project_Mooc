@@ -207,6 +207,38 @@ body {font-family: Arial, Helvetica, sans-serif;}
                       </thead>
                       <tbody class="courses-body">
 
+                      <?php
+			  		              $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+					                if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                          }
+
+					                $sql = "SELECT id, title, description, course_image as image 
+                                  FROM `courses`  ";
+
+                          echo $sql;
+    
+                          $result =$conn->query($sql);
+ 
+                          foreach($result as $data){
+                            print "<tr>";
+                
+                              $id = $data['id'];
+                              $title = $data['title'];
+                              $description = $data['description'];
+                              $image = $data['image'];
+                
+                              print "<td>$id</td>";
+                              print "<td>$title</td>";
+                              print "<td>$description</td>";
+                              print "<td><img src=$image width=\"150\" height=\"100\"></td>";
+                              print "</tr>";
+                          }
+                         
+		
+				                ?>
+
                       </tbody>
                     </table>
                   </div>
@@ -236,6 +268,6 @@ function closeForm() {
 </script>
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="assets/js/dashboard-courses.js"></script>
+<!-- <script type="text/javascript" src="assets/js/dashboard-courses.js"></script> -->
 </body>
 </html>

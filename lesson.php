@@ -98,7 +98,7 @@
 				print "<p>$short</p>";
 				print "<p>$full</p>";
 
-				print "<td><button><a href=\"./questions.php?leson=$id\">Take the quiz</a></button></td>";
+				print "<td><button><a href=\"./questions.php?lesson=$id\">Take the quiz</a></button></td>";
 
 			}
 
