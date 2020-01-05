@@ -86,37 +86,55 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
       Tip 2: you can also add an image using data-image tag
   -->
-      <div class="logo">
+  <div class="logo">
         
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./courses.php" class="simple-text logo-normal">
           Mooc
         </a>
       </div>
       <div class="sidebar-wrapper">
       <ul class="nav">
           <li class="nav-item active ">
-            <a class="nav-link" href="./courses.php">
+            <a class="nav-link" href="./dashboard_teachers.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - courses.php">
-                <i class="material-icons">content_paste</i>
-                <p>courses</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - Courses.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>courses</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - lessons.php">
-                <i class="material-icons">library_books</i>
-                <p>lessons</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - lessons.php?user=$user\">
+                  <i class=\"material-icons\">library_books</i>
+                  <p>Lessons</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers-questions.php">
-                <i class="material-icons">bubble_chart</i>
-                <p>questions</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers-questions.php?user=$user\">
+                  <i class=\"material-icons\">bubble_chart</i>
+                  <p>questions</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./home.php">
@@ -128,7 +146,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         </ul>
       </div>
     </div>
-    <div class="main-panel">
+        <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
@@ -200,6 +218,43 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         </th>
                       </thead>
                       <tbody class="courses-body">
+                      <?php
+
+                        $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                        if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        $args = $_REQUEST;
+                        $user = $args['user'];
+
+                        $sql = "SELECT c.title, c.description, c.course_image as image
+                        FROM `teacher` t 
+                        LEFT JOIN courses c ON c.id = t.course_id
+                        where t.user_id = $user ";
+
+                        $result =$conn->query($sql);
+
+                        $id = 1; 
+
+                        foreach($result as $data){
+                          print "<tr>";
+
+                            $title = $data['title'];
+                            $description = $data['description'];
+                            $image = $data['image'];
+
+                            print "<td>$id</td>";
+                            print "<td>$title</td>";
+                            print "<td>$description</td>";
+                            print "<td><img src=$image width=\"150\" height=\"100\"></td>";
+                            print "</tr>";
+
+                            $id ++;
+                        }
+
+                      ?>
 
                       </tbody>
                     </table>

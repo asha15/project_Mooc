@@ -29,7 +29,7 @@
   -->
       <div class="logo">
         
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./courses.php" class="simple-text logo-normal">
           Mooc
         </a>
       </div>
@@ -42,22 +42,40 @@
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - courses.php">
-                <i class="material-icons">content_paste</i>
-                <p>courses</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - Courses.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>courses</p>
+                </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - lessons.php">
-                <i class="material-icons">library_books</i>
-                <p>lessons</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - lessons.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>Lessons</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers-questions.php">
-                <i class="material-icons">bubble_chart</i>
-                <p>questions</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers-questions.php?user=$user\">
+                  <i class=\"material-icons\">bubble_chart</i>
+                  <p>questions</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./home.php">

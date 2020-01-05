@@ -27,14 +27,14 @@
   -->
       <div class="logo">
         
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./courses.php" class="simple-text logo-normal">
           Mooc
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active ">
-            <a class="nav-link" href="./courses.php">
+            <a class="nav-link" href="./dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -134,11 +134,11 @@
 
     <?php
 
-         $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+        $conn = new mysqli("localhost", "rootuser", "123456789", "r");
 
-         if ($conn->connect_error) {
-                      die("Connection failed: " . $conn->connect_error);
-              }
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
 
         $sql = "SELECT DISTINCT c.title as course, l.title as lesson, q.question,
                 qo.option_text as answer, qo.correct 

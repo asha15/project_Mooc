@@ -85,37 +85,55 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
       Tip 2: you can also add an image using data-image tag
   -->
-      <div class="logo">
+  <div class="logo">
         
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./courses.php" class="simple-text logo-normal">
           Mooc
         </a>
       </div>
       <div class="sidebar-wrapper">
       <ul class="nav">
           <li class="nav-item active ">
-            <a class="nav-link" href="./courses.php">
+            <a class="nav-link" href="./dashboard_teachers.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - courses.php">
-                <i class="material-icons">content_paste</i>
-                <p>courses</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - Courses.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>courses</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - lessons.php">
-                <i class="material-icons">library_books</i>
-                <p>lessons</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - lessons.php?user=$user\">
+                  <i class=\"material-icons\">library_books</i>
+                  <p>Lessons</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers-questions.php">
-                <i class="material-icons">bubble_chart</i>
-                <p>questions</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers-questions.php?user=$user\">
+                  <i class=\"material-icons\">bubble_chart</i>
+                  <p>questions</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./home.php">
@@ -208,6 +226,44 @@ body {font-family: Arial, Helvetica, sans-serif;}
                       </thead>
                       <tbody class="lessons-body">
                       
+                      <?php
+
+                        $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                        if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        $args = $_REQUEST;
+                        $user = $args['user'];
+
+                        $sql = "SELECT c.title as course, l.title as lesson, l.position
+                        FROM `lessons` l
+                        LEFT JOIN courses c ON c.id = l.course_id
+                        WHERE l.user_id = $user ";
+
+                        $result =$conn->query($sql);
+
+                        $id = 1; 
+
+                        foreach($result as $data){
+                          print "<tr>";
+
+                            $course   = $data['course'];
+                            $lesson   = $data['lesson'];
+                            $position = $data['position'];
+
+                            print "<td>$id</td>";
+                            print "<td>$course</td>";
+                            print "<td>$lesson</td>";
+                            print "<td>$position</td>";
+                            print "</tr>";
+
+                            $id ++;
+                        }
+
+                      ?>
+
                       </tbody>
                     </table>
                   </div>

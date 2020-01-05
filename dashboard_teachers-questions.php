@@ -27,35 +27,53 @@
   -->
       <div class="logo">
         
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="./courses.php" class="simple-text logo-normal">
           Mooc
         </a>
       </div>
       <div class="sidebar-wrapper">
       <ul class="nav">
           <li class="nav-item active ">
-            <a class="nav-link" href="./courses.php">
+            <a class="nav-link" href="./dashboard_teachers.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - courses.php">
-                <i class="material-icons">content_paste</i>
-                <p>courses</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - Courses.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>courses</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers - lessons.php">
-                <i class="material-icons">library_books</i>
-                <p>lessons</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers - lessons.php?user=$user\">
+                  <i class=\"material-icons\">library_books</i>
+                  <p>Lessons</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard_teachers-questions.php">
-                <i class="material-icons">bubble_chart</i>
-                <p>questions</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard_teachers-questions.php?user=$user\">
+                  <i class=\"material-icons\">bubble_chart</i>
+                  <p>questions</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./home.php">
@@ -115,9 +133,6 @@
                             Lesson ID
                           </th>
                           <th>
-                            Question ID
-                          </th>
-                          <th>
                             Question
                           </th>
                           <th>
@@ -128,7 +143,52 @@
                           </th>
                         </thead>
                         <tbody class="question-body">
-                          
+                        <?php
+
+$conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$args = $_REQUEST;
+                        $user = $args['user'];
+
+$sql = "SELECT DISTINCT c.title as course, l.title as lesson, q.question,
+        qo.option_text as answer, qo.correct 
+        FROM questions q
+         LEFT JOIN questions_options qo ON qo.question_id= q.id
+        LEFT JOIN question_test qt ON qt.question_id = q.id
+        LEFT JOIN tests t ON t.id = qt.test_id
+        LEFT JOIN tests t1 ON t1.id = qt.test_id
+        LEFT JOIN courses c ON c.id = t1.course_id
+        LEFT JOIN lessons l ON l.id = t1.lesson_id 
+        WHERE l.user_id = $user";
+
+$result = $conn->query($sql);
+$id = 1;
+
+foreach($result as $data){
+  print "<tr>";
+
+    $course = $data['course'];
+    $lesson = $data['lesson'];
+    $question = $data['question'];
+    $answer = $data['answer'];
+    $correct = $data['correct'];
+
+    print "<td>$id</td>";
+    print "<td>$course</td>";
+    print "<td>$lesson</td>";
+    print "<td>$question</td>";
+    print "<td>$answer</td>";
+    print "<td>$correct</td>";
+    print "</tr>";
+
+    $id ++;
+}
+?>
+
                         </tbody>
                       </table>
                     </div>

@@ -102,7 +102,7 @@
 		print " <td>$title  </td>";
 		print " <td><img src=$image width=\"150\" height=\"100\"> </td>";
 		//print "<td>$image</td>";
-		print "<button><a href=\"./teachers.php?course=$id\">Learn more</a></button>";
+		print "<td><button><a href=\"./teachers.php?course=$id\">Learn more</a></button></td>";
 		print "</tr>";
 		}
 
