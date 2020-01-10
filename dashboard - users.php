@@ -170,7 +170,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <br>
           <div class="form-popup" id="myForm">
   
-          <form method="post" action="dashboard-users.php" class="form-container">
+          <form method="post" action="insert.php" class="form-container">
             <h3>Add user</h3>
 
             <label for="name"><b>Name</b></label>
