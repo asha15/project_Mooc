@@ -1,5 +1,5 @@
 <?php
-  require_once ('server.php');
+  require_once ('insert.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -166,7 +166,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
           <div class="form-popup" id="myForm">
   
-          <form action="/action_page.php" class="form-container">
+          <form method="post" action="insert.php" class="form-container">
             <h1>Add course</h1>
 
             <label for="name"><b>Name</b></label>
@@ -175,9 +175,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <label for="des"><b>Description</b></label>
             <input type="text" placeholder="Enter Description" name="des" required>
 
-            <button>Add image</button>
+            <!-- <button>Add image</button> -->
+            <input type="folder" name="image">
             <br><br/>
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn" name="add_courses">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>

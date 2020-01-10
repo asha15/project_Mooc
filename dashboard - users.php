@@ -1,5 +1,5 @@
 <?php
-  include('server.php');
+  include('insert.php');
 ?>
 <!doctype html>
 <html lang="en">
@@ -184,7 +184,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <label for="role"><b>Role</b></label>
             <input type="text" placeholder="Student/Teacher" id="role" name="role" required>
 
-            <button type="submit" class="btn" onclick="addUser()">Add</button>
+            <button type="submit" class="btn" onclick="addUser()" name="add_users">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>
