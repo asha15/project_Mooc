@@ -179,11 +179,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <br>
           <div class="form-popup" id="myForm">
   
-          <form action="/action_page.php" class="form-container">
+          <form action="insert.php" class="form-container">
             <h3>Add leson</h3>
 
-            <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
+            <label for="name"><b>title</b></label>
+            <input type="text" placeholder="Enter lesson title" name="name" required>
 
             <label for="position"><b>position</b></label>
             <input type="text" placeholder="Enter position" name="position" required>
@@ -197,7 +197,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <label for="ft"><b>Full text</b></label>
             <input type="text" placeholder="Enter full text" name="ft" required>
 
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn" method="add_lessons">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>

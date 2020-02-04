@@ -176,7 +176,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <button onclick="openForm()">Add new</button>
           <br><br>
 
-          <div class="form-popup" id="myForm">
+          <div class="form-popup" method = "post" action="insert.php">
   
           <form action="/action_page.php" class="form-container">
             <h1>Add course</h1>
@@ -189,7 +189,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
             <button>Add image</button>
             <br><br/>
-            <button type="submit" class="btn">Add</button>
+            <button type="submit" class="btn" name="add_courses">Add</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
           </form>
           </div>
