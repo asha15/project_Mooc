@@ -94,35 +94,61 @@ body {font-family: Arial, Helvetica, sans-serif;}
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active ">
-            <a class="nav-link" href="./dashboard.php">
+        <li class="nav-item active ">
+            <a class="nav-link" href="./courses.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item active ">
-	    <a class="nav-link" href="./dashboard - users.php">
-              <i class="material-icons">person</i>
-              <p>Users</p>
-            </a>
+            <?php
+
+              $args = $_REQUEST;
+              $user = $args['user'];
+              print "<a class=\"nav-link\" href=\"./dashboard - users.php?user=$user\">
+                    <i class=\"material-icons\">person</i>
+                    <p>users</p>
+                    </a>
+              ";
+            ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./d-courses.php">
-                <i class="material-icons">content_paste</i>
-                <p>courses</p>
-              </a>
+
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./d-courses.php?user=$user\">
+                  <i class=\"material-icons\">content_paste</i>
+                  <p>courses</p>
+                  </a>
+              ";
+            ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - lessons.php">
-                <i class="material-icons">library_books</i>
-                <p>lessons</p>
-              </a>
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard - lessons.php?user=$user\">
+                  <i class=\"material-icons\">library_books</i>
+                  <p>lessons</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
-              <a class="nav-link" href="./dashboard - questions.php">
-                <i class="material-icons">bubble_chart</i>
-                <p>questions</p>
-              </a>
+
+          <?php
+
+            $args = $_REQUEST;
+            $user = $args['user'];
+            print "<a class=\"nav-link\" href=\"./dashboard - questions.php?user=$user\">
+                  <i class=\"material-icons\">bubble_chart</i>
+                  <p>questions</p>
+                  </a>
+            ";
+          ?>
           </li>
           <li class="nav-item active ">
               <a class="nav-link" href="./home.php">
@@ -130,7 +156,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
                 <p>Logout</p>
               </a>
           </li>
-
           <!-- your sidebar here -->
         </ul>
       </div>
@@ -152,7 +177,31 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
-                  <i class="material-icons">notifications</i> Notifications
+                <i class="material-icons">person</i> logged as 
+
+                <?php
+
+                    $conn = new mysqli("localhost", "rootuser", "123456789", "r");
+
+                    if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $user = $_REQUEST['user'];
+
+                    $query = "SELECT name FROM `users` WHERE id = '$user'";
+                    $result =$conn->query($query);
+                    debug(__FILE__,__FUNCTION__,__LINE__, $result);
+
+                    foreach($result as $data){
+                      
+                      $name = $data['name'];
+
+                      print "$name";
+                    }
+
+
+                ?>
                 </a>
               </li>
               <!-- your navbar here -->
