@@ -8,7 +8,7 @@ define('DEFAULT_PAGE_SIZE', 10);
 define('DEFAULT_UPDATED_BY', null);
 define('DEFAULT_USER_ROLE_ID', 14);
 
-define('DOC_ROOT', '../..');
+define('DOC_ROOT', '..');
 define('AUDIT_LOG_DIR', DOC_ROOT.'/mooc_audit');
 
 define('NO_AUTH_IP_LIST', "::1");
