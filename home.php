@@ -81,8 +81,8 @@
                               <div class="form loginBox">
                                   <form method="post" action="login.php" accept-charset="UTF-8">
                                   <?php include('errors.php'); ?>
-                                  <p>Email<input id="email" class="form-control" type="text" placeholder="Email" name="email"></p>
-                                  <p>Password<input type="password" name="password"></p>
+                                  <p>Email<input id="email" class="form-control" type="text" placeholder="Email" name="email" required></p>
+                                  <p>Password<input type="password" name="password" required></p>
                                   <div class="input-group">
   	                                <button type="submit" class="btn" name="login_user">Login</button>
   	                              </div>
@@ -95,11 +95,12 @@
                           <div class="content registerBox" style="display:none;">
                            <div class="form">
                               <form method="post" html="{:multipart=>true}" data-remote="true" action="home.php" accept-charset="UTF-8">
-                              <p>Name<input id="id" class="form-control" type="text" placeholder="Name" name="username"></p>
-                              <p>Email<input id="email" class="form-control" type="text" placeholder="Email" name="email"></p>
-                              <p>Password<input id="password" class="form-control" type="password" placeholder="Password" name="password_1"></p>
-                              <p>Repeat password</p><input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_2">
-                              <p>I am a</p><input class="form-control" type="text" placeholder="Student/ Teacher" name="role">
+                              <p>Name<input id="id" class="form-control" type="text" placeholder="Name" name="username" required></p>
+                              <p>Email<input id="email" class="form-control" type="text" placeholder="Email" name="email" required></p>
+                              <p>Password<input id="password" class="form-control" type="password" placeholder="Password" name="password_1" 
+                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required></p>
+                              <!--<p>Repeat password</p><input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_2" required> -->
+                              <p>I am a</p><input class="form-control" type="text" placeholder="Student/ Teacher" name="role" required> 
                               <br>
                            <!-- <div class="container">
                            <div class="dropdown">

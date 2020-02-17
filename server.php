@@ -122,6 +122,9 @@ if (isset($_POST['login_user'])) {
   // $results = mysqli_query($db, $query);
     //  $id = $results['id'];
 
+    if(empty($result1)){
+      header('location: error_register.php');
+    }else{
     $id = $result1['0']['id'];
 
     $role_id = '';
@@ -133,8 +136,11 @@ if (isset($_POST['login_user'])) {
         header('location: dashboard.php?user='.$id); 
       } else if($result2 == '2'){ 
         header('location: dashboard_teachers.php?user='.$id); 
-      } else header('location: courses.php?user='.$id);
-  	}
+      } else 
+      //header('location: courses.php?user='.$id);
+      header('location: error_register.php');
+    }
+  }
   
 }
 
